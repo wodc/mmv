@@ -1,5 +1,6 @@
-#include "FenResult.h"
 #include "PriFen.h"
+#include "FenResult.h"
+#include "Buffer.h"
 
 PriFen::PriFen() : QWidget()
 {
@@ -32,17 +33,21 @@ PriFen::PriFen() : QWidget()
 
 void PriFen::ouvrirResultat()
 {
-    QChar c;
     QString sResult;
 
+    Buffer donnees(m_dataPhrase->text());
+
     if( m_dataPhrase->text().isEmpty() ){
-        QMessageBox::critical(this, "Phrase incorrecte", "Vous n'avez renseigné de phrase à coder.");
+        QMessageBox::critical(this, "Phrase incorrecte", "Vous n'avez pas renseigné de phrase à coder.");
         return;
      }
     for (int i = 0; i < m_dataPhrase->text().size(); ++i) {
-        c = m_dataPhrase->text().at(i);
-        sResult.append( c );
-        sResult.append( QChar::LineFeed );
+        if( donnees.tryWrite() ){
+            sResult.append( donnees.instruction() );
+        }
+        if( donnees.tryRead() ){
+            sResult.append( donnees.instruction() );
+        }
         m_fenetreResultat->ajouteLigne( sResult );
         m_fenetreResultat->show();
      }

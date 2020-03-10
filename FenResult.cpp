@@ -10,9 +10,9 @@ FenResult::FenResult() : QDialog()
     m_resultTexte->setReadOnly( true );
     m_layoutResult = new QVBoxLayout( this );
 
-    this->setFont(  QFont("Courier New", 14, QFont::Bold) );
+    this->setFont( QFont("Courier New", 12) );
 
-    m_layoutResult->addWidget( m_resultTexte);
+    m_layoutResult->addWidget( m_resultTexte );
 }
 
 void FenResult::ajouteLigne( QString texte ){
