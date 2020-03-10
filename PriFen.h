@@ -14,18 +14,23 @@ class PriFen : public QWidget
 
     public slots:
     void ouvrirResultat();
+    void selectionFichier();
 
     private:
-    QFormLayout *m_layoutData;
-    QLineEdit   *m_dataPhrase;
+    QGridLayout  *m_layoutData;
+    QLabel       *m_labelPhrase;
+    QLineEdit    *m_dataPhrase;
+    QLabel       *m_labelFichier;
+    QLineEdit    *m_fichierBinaire;
+    QPushButton  *m_boutonSelection;
 
-    QPushButton *m_boutonLancer;
-    QPushButton *m_boutonReset;
-    QPushButton *m_boutonQuitter;
-    QHBoxLayout *m_layoutGo;
+    QPushButton  *m_boutonLancer;
+    QPushButton  *m_boutonReset;
+    QPushButton  *m_boutonQuitter;
+    QHBoxLayout  *m_layoutGo;
 
-    QVBoxLayout *m_layoutGlobale;
-    FenResult   *m_fenetreResultat;
+    QVBoxLayout  *m_layoutGlobale;
+    FenResult    *m_fenetreResultat;
 };
 
 #endif // PRIFEN_H
