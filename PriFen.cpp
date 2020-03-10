@@ -41,7 +41,7 @@ void PriFen::ouvrirResultat()
         QMessageBox::critical(this, "Phrase incorrecte", "Vous n'avez pas renseigné de phrase à coder.");
         return;
      }
-    for (int i = 0; i < m_dataPhrase->text().size(); ++i) {
+    while( !donnees.allIsWrite() || !donnees.allIsRead() ) {
         if( donnees.tryWrite() ){
             sResult.append( donnees.instruction() );
         }
