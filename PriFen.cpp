@@ -35,20 +35,22 @@ void PriFen::ouvrirResultat()
 {
     QString sResult;
 
-    Buffer donnees(m_dataPhrase->text());
-
     if( m_dataPhrase->text().isEmpty() ){
         QMessageBox::critical(this, "Phrase incorrecte", "Vous n'avez pas renseigné de phrase à coder.");
         return;
      }
-    while( !donnees.allIsWrite() || !donnees.allIsRead() ) {
-        if( donnees.tryWrite() ){
-            sResult.append( donnees.instruction() );
+
+    Buffer *donnees = new Buffer(m_dataPhrase->text());
+    while( !donnees->allIsWrite() || !donnees->allIsRead() ) {
+        if( donnees->tryWrite() ){
+            sResult.append( donnees->instruction() );
         }
-        if( donnees.tryRead() ){
-            sResult.append( donnees.instruction() );
+        if( donnees->tryRead() ){
+            sResult.append( donnees->instruction() );
         }
         m_fenetreResultat->ajouteLigne( sResult );
-        m_fenetreResultat->show();
      }
+    delete donnees;
+
+    m_fenetreResultat->show();
 }

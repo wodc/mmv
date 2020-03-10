@@ -17,9 +17,9 @@ Buffer::Buffer( QString data ){
 bool Buffer::tryWrite(){
     quint32 ind = qrand()%m_size;
     quint32 adr = qrand()%mc_tailleMem;
+    if(m_cWr>(2*m_cRd)){ ind=m_indice; }
     if( (*m_el)[ind].write(adr) ){
         m_instruction = (*m_el)[ind].instruction();
-        m_instruction.prepend(QString("%1:").arg(ind));
         m_cWr++;
         return(true);
     }
