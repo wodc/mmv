@@ -4,6 +4,7 @@
 #include <QApplication>
 #include <QVector>
 #include <QRandomGenerator>
+#include <QDataStream>
 #include "UnElement.h"
 
 class Buffer{
@@ -19,9 +20,9 @@ class Buffer{
 
   public :
     Buffer( QString );
-    bool tryWrite();
+    bool tryWrite(QDataStream &);
     bool allIsWrite();
-    bool tryRead();
+    bool tryRead(QDataStream &);
     bool allIsRead();
     QString instruction();
 };

@@ -51,17 +51,20 @@ void PriFen::ouvrirResultat()
         QMessageBox::critical(this, "Phrase incorrecte", "Vous n'avez pas renseigné de phrase à coder.");
         return;
      }
-    if( false && m_fichierBinaire->text().isEmpty() ){
+    if( m_fichierBinaire->text().isEmpty() ){
         QMessageBox::critical(this, "Aucun fichier choisi", "Vous n'avez pas selectionné de fichier.");
         return;
      }
+    QFile fichierBinaire( m_fichierBinaire->text() );
+    fichierBinaire.open(QIODevice::WriteOnly);
+    QDataStream out(&fichierBinaire);
 
     Buffer *donnees = new Buffer(m_dataPhrase->text());
     while( !donnees->allIsWrite() || !donnees->allIsRead() ) {
-        if( donnees->tryWrite() ){
+        if( donnees->tryWrite( out ) ){
             sResult.append( donnees->instruction() );
         }
-        if( donnees->tryRead() ){
+        if( donnees->tryRead( out ) ){
             sResult.append( donnees->instruction() );
         }
         m_fenetreResultat->ajouteLigne( sResult );
@@ -75,7 +78,7 @@ void PriFen::selectionFichier(){
     QString fichier;
 
     fichier = QFileDialog::getSaveFileName(this, "Choisir le fichier à créer", QString());
-    if( false && fichier.isEmpty() ){
+    if( fichier.isEmpty() ){
         m_fichierBinaire->setText( "" );
         QMessageBox::critical(this, "Aucun fichier choisi", "Vous n'avez pas selectionné de fichier.");
         return;

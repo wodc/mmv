@@ -3,6 +3,7 @@
 
 #include <QApplication>
 #include <QtWidgets>
+#include <QDataStream>
 #include "FenResult.h"
 
 class PriFen : public QWidget

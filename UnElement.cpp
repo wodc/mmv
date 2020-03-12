@@ -4,10 +4,9 @@ UnElement::UnElement(){
     m_c        = 0;
     m_adr      = 0;
     m_flag     = 0;
-    m_binCode[0]  = 0xffffffff;
-    m_binCode[1]  = 0xffffffff;
-//    m_binCode  = QRandomGenerator::global()->bounded(0xffffffff);
+    m_binCode[0]  = QRandomGenerator::global()->bounded(0xffffffff);
     m_binCode[0] &= 0xe3e00601;
+    m_binCode[1]  = QRandomGenerator::global()->bounded(0xffffffff);
     m_binCode[1] &= 0xe3e007ff;
 };
 
