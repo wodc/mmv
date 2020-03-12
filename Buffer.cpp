@@ -15,11 +15,14 @@ Buffer::Buffer( QString data ){
 };
 
 bool Buffer::tryWrite(){
-    quint32 ind = qrand()%m_size;
-    quint32 adr = qrand()%mc_tailleMem;
+    quint32 ind = QRandomGenerator::global()->bounded(m_size);
+    quint32 adr = QRandomGenerator::global()->bounded(mc_tailleMem);
+
     if(m_cWr>(2*m_cRd)){ ind=m_indice; }
     if( (*m_el)[ind].write(adr) ){
         m_instruction = (*m_el)[ind].instruction();
+        m_instruction.append( QString(" -> [%1]").arg((*m_el)[ind].binCode('w'), 32, 2, QChar('0')) );
+        m_instruction.append( QChar::LineFeed );
         m_cWr++;
         return(true);
     }
@@ -32,7 +35,10 @@ bool Buffer::allIsWrite(){
 
 bool Buffer::tryRead(){
    if( (*m_el)[m_indice].read( &m_AdrLu ) ){
-       m_instruction = (*m_el)[m_indice++].instruction();
+       m_instruction = (*m_el)[m_indice].instruction();
+       m_instruction.append( QString(" -> [%1]").arg((*m_el)[m_indice].binCode('r'), 32, 2, QChar('0')) );
+       m_instruction.append( QChar::LineFeed );
+       ++m_indice;
        m_cRd++;
        return(true);
    }

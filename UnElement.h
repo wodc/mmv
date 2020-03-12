@@ -2,13 +2,15 @@
 #define UNELEMENT_H
 
 #include <QApplication>
+#include <QRandomGenerator>
 
 class UnElement{
   private :
     unsigned char m_c;
-    unsigned int  m_adr;
+    quint32  m_adr;
     unsigned char m_flag;
     QString m_instruction;
+    quint32 m_binCode[2];
   public :
     UnElement();
     void setElement( QChar );
@@ -16,6 +18,7 @@ class UnElement{
     bool write( unsigned int );
     bool read( unsigned int *  );
     QString instruction();
+    quint32 binCode(char);
 };
 
 #endif // UNELEMENT_H

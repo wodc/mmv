@@ -3,7 +3,7 @@
 FenResult::FenResult() : QDialog()
 {
     this->setWindowTitle("Code résultat");
-    this->setMinimumWidth( 400 );
+    this->setMinimumWidth( 800 );
     this->setMinimumHeight( 800 );
 
     m_resultTexte  = new QTextEdit();
