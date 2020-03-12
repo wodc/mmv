@@ -77,7 +77,7 @@ void PriFen::ouvrirResultat()
 void PriFen::selectionFichier(){
     QString fichier;
 
-    fichier = QFileDialog::getSaveFileName(this, "Choisir le fichier à créer", QString());
+    fichier = QFileDialog::getSaveFileName(this, "Choisir le fichier à créer", QString("/tmp/"));
     if( fichier.isEmpty() ){
         m_fichierBinaire->setText( "" );
         QMessageBox::critical(this, "Aucun fichier choisi", "Vous n'avez pas selectionné de fichier.");

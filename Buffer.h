@@ -7,6 +7,11 @@
 #include <QDataStream>
 #include "UnElement.h"
 
+typedef union conv {
+    quint32 i;
+    unsigned char ch[4];
+} t_conv;
+
 class Buffer{
   private :
     quint32 const mc_tailleMem = 0x400;
