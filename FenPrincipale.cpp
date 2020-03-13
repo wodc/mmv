@@ -1,8 +1,8 @@
-#include "PriFen.h"
-#include "FenResult.h"
-#include "Buffer.h"
+#include "FenPrincipale.h"
+#include "FenResultat.h"
+#include "Moteur.h"
 
-PriFen::PriFen() : QWidget()
+FenPrincipale::FenPrincipale() : QWidget()
 {
     this->setWindowTitle("Construction de l'exercice");
 
@@ -27,7 +27,7 @@ PriFen::PriFen() : QWidget()
     m_boutonQuitter    = new QPushButton("Quitter");
     m_layoutGo         = new QHBoxLayout;
 
-    m_fenetreResultat = new FenResult;
+    m_fenetreResultat = new FenResultat;
 
     m_layoutGo->addWidget( m_boutonLancer);
     m_layoutGo->addWidget( m_boutonReset);
@@ -43,7 +43,7 @@ PriFen::PriFen() : QWidget()
     QObject::connect(m_boutonQuitter , SIGNAL(clicked()), qApp, SLOT(quit()));
 }
 
-void PriFen::ouvrirResultat()
+void FenPrincipale::ouvrirResultat()
 {
     QString sResult;
 
@@ -59,7 +59,7 @@ void PriFen::ouvrirResultat()
     fichierBinaire.open(QIODevice::WriteOnly);
     QDataStream out(&fichierBinaire);
 
-    Buffer *donnees = new Buffer(m_dataPhrase->text());
+    Moteur *donnees = new Moteur(m_dataPhrase->text());
     while( !donnees->allIsWrite() || !donnees->allIsRead() ) {
         if( donnees->tryWrite( out ) ){
             sResult.append( donnees->instruction() );
@@ -74,7 +74,7 @@ void PriFen::ouvrirResultat()
     m_fenetreResultat->show();
 }
 
-void PriFen::selectionFichier(){
+void FenPrincipale::selectionFichier(){
     QString fichier;
 
     fichier = QFileDialog::getSaveFileName(this, "Choisir le fichier à créer", QString("/tmp/"));

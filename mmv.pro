@@ -1,14 +1,16 @@
 QT += widgets
 
 SOURCES += \
-    Buffer.cpp \
-    FenResult.cpp \
-    PriFen.cpp \
-    UnElement.cpp \
+    FenPrincipale.cpp \
+    FenResultat.cpp \
+    Moteur.cpp \
+    UnCodeBinaire.cpp \
+    UneLettre.cpp \
     main.cpp
 
 HEADERS += \
-    Buffer.h \
-    FenResult.h \
-    PriFen.h \
-    UnElement.h
+    FenPrincipale.h \
+    FenResultat.h \
+    Moteur.h \
+    UnCodeBinaire.h \
+    UneLettre.h

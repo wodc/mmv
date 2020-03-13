@@ -1,6 +1,6 @@
-#include "UnElement.h"
+#include "UneLettre.h"
 
-UnElement::UnElement(){
+UneLettre::UneLettre(){
     m_c        = 0;
     m_adr      = 0;
     m_flag     = 0;
@@ -10,15 +10,15 @@ UnElement::UnElement(){
     m_binCode[1] &= 0xe3e007ff;
 };
 
-void UnElement::setElement(QChar ch){
+void UneLettre::setElement(QChar ch){
     m_c=ch.cell();
 };
 
-unsigned char UnElement::element(){
+unsigned char UneLettre::element(){
     return(m_c);
 };
 
-bool UnElement::write( unsigned int adr ){
+bool UneLettre::write( unsigned int adr ){
     quint32 a;
     unsigned char d;
     if( m_flag == 0 ){
@@ -37,7 +37,7 @@ bool UnElement::write( unsigned int adr ){
     return false;
 };
 
-bool UnElement::read( unsigned int *adr ){
+bool UneLettre::read( unsigned int *adr ){
     quint32 a;
     if( m_flag == 1 ){
         *adr   = m_adr;
@@ -52,11 +52,11 @@ bool UnElement::read( unsigned int *adr ){
     return false;
 };
 
-QString UnElement::instruction(){
+QString UneLettre::instruction(){
     return(m_instruction);
 };
 
-quint32 UnElement::binCode(char inst){
+quint32 UneLettre::binCode(char inst){
     if( inst == 'w')
         return(m_binCode[0]);
     else if( inst == 'r' )

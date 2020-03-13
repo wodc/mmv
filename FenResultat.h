@@ -1,13 +1,13 @@
-#ifndef FENRESULT_H
-#define FENRESULT_H
+#ifndef FENRESULTAT_H
+#define FENRESULTAT_H
 
 #include <QApplication>
 #include <QtWidgets>
 
-class FenResult : public QDialog
+class FenResultat : public QDialog
 {
     public:
-    FenResult();
+    FenResultat();
     void ajouteLigne( QString );
 
     private:
@@ -15,4 +15,4 @@ class FenResult : public QDialog
     QVBoxLayout *m_layoutResult;
 };
 
-#endif // FENRESULT_H
+#endif // FENRESULTAT_H

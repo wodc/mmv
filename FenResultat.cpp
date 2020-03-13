@@ -1,6 +1,6 @@
-#include "FenResult.h"
+#include "FenResultat.h"
 
-FenResult::FenResult() : QDialog()
+FenResultat::FenResultat() : QDialog()
 {
     this->setWindowTitle("Code résultat");
     this->setMinimumWidth( 800 );
@@ -15,6 +15,6 @@ FenResult::FenResult() : QDialog()
     m_layoutResult->addWidget( m_resultTexte );
 }
 
-void FenResult::ajouteLigne( QString texte ){
+void FenResultat::ajouteLigne( QString texte ){
     m_resultTexte->setText( texte );
 }

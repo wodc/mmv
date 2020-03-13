@@ -2,7 +2,7 @@
 #include <QTranslator>
 #include <QLocale>
 #include <QLibraryInfo>
-#include "PriFen.h"
+#include "FenPrincipale.h"
 
 int main(int argc, char *argv[])
 {
@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
     translator.load(QString("qt_") + locale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
     app.installTranslator(&translator);
 
-    PriFen fenetre;
+    FenPrincipale fenetre;
     fenetre.show();
 
     return app.exec();

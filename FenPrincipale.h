@@ -1,17 +1,17 @@
-#ifndef PRIFEN_H
-#define PRIFEN_H
+#ifndef FENPRINCIPALE_H
+#define FENPRINCIPALE_H
 
 #include <QApplication>
 #include <QtWidgets>
 #include <QDataStream>
-#include "FenResult.h"
+#include "FenResultat.h"
 
-class PriFen : public QWidget
+class FenPrincipale : public QWidget
 {
     Q_OBJECT
 
     public:
-    PriFen();
+    FenPrincipale();
 
     public slots:
     void ouvrirResultat();
@@ -31,7 +31,7 @@ class PriFen : public QWidget
     QHBoxLayout  *m_layoutGo;
 
     QVBoxLayout  *m_layoutGlobale;
-    FenResult    *m_fenetreResultat;
+    FenResultat  *m_fenetreResultat;
 };
 
-#endif // PRIFEN_H
+#endif // FENPRINCIPALE_H

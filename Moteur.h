@@ -1,18 +1,18 @@
-#ifndef BUFFER_H
-#define BUFFER_H
+#ifndef MOTEUR_H
+#define MOTEUR_H
 
 #include <QApplication>
 #include <QVector>
 #include <QRandomGenerator>
 #include <QDataStream>
-#include "UnElement.h"
+#include "UneLettre.h"
 
 typedef union conv {
     quint32 i;
     unsigned char ch[4];
 } t_conv;
 
-class Buffer{
+class Moteur{
   private :
     quint32 const mc_tailleMem = 0x400;
     int m_size;
@@ -20,11 +20,11 @@ class Buffer{
     int m_cWr;
     int m_cRd;
     unsigned int m_AdrLu;
-    QVector<UnElement> *m_el;
+    QVector<UneLettre> m_el;
     QString m_instruction;
 
   public :
-    Buffer( QString );
+    Moteur( QString );
     bool tryWrite(QDataStream &);
     bool allIsWrite();
     bool tryRead(QDataStream &);
@@ -32,4 +32,4 @@ class Buffer{
     QString instruction();
 };
 
-#endif // BUFFER_H
+#endif // MOTEUR_H
