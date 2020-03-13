@@ -67,7 +67,7 @@ void FenPrincipale::ouvrirResultat()
         if( donnees->tryRead( out ) ){
             sResult.append( donnees->instruction() );
         }
-        m_fenetreResultat->ajouteLigne( sResult );
+        m_fenetreResultat->rafraichir( sResult );
      }
     delete donnees;
 

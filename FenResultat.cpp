@@ -15,6 +15,6 @@ FenResultat::FenResultat() : QDialog()
     m_layoutResult->addWidget( m_resultTexte );
 }
 
-void FenResultat::ajouteLigne( QString texte ){
+void FenResultat::rafraichir( QString texte ){
     m_resultTexte->setText( texte );
 }

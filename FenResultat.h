@@ -8,7 +8,7 @@ class FenResultat : public QDialog
 {
     public:
     FenResultat();
-    void ajouteLigne( QString );
+    void rafraichir( QString );
 
     private:
     QTextEdit   *m_resultTexte;
