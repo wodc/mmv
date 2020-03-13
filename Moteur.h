@@ -6,6 +6,7 @@
 #include <QRandomGenerator>
 #include <QDataStream>
 #include "UneLettre.h"
+#include "UnCodeBinaire.h"
 
 typedef union conv {
     quint32 i;
@@ -17,10 +18,12 @@ class Moteur{
     quint32 const mc_tailleMem = 0x400;
     int m_size;
     int m_indice;
+    int m_indBin;
     int m_cWr;
     int m_cRd;
     unsigned int m_AdrLu;
-    QVector<UneLettre> m_el;
+    QVector<UneLettre>     m_el;
+    QVector<UnCodeBinaire> m_bin;
     QString m_instruction;
 
   public :

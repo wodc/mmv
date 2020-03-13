@@ -18,34 +18,21 @@ unsigned char UneLettre::element(){
     return(m_c);
 };
 
-bool UneLettre::write( unsigned int adr ){
-    quint32 a;
-    unsigned char d;
+bool UneLettre::write( unsigned int adr, UnCodeBinaire& cbin ){
     if( m_flag == 0 ){
         m_adr  = adr;
         m_flag = 1;
-        m_binCode[0] |= 0xef000000;
-        a = m_adr;
-        a <<=11;
-        m_binCode[0] |= a;
-        d = m_c;
-        d <<=1;
-        m_binCode[0] |= d;
+        cbin.setBinCode( m_adr, m_c );
         m_instruction = QString("WRITE '%1' AT 0x%2").arg(QChar(m_c)).arg(m_adr, 4, 16, QChar('0'));
         return true;
     }
     return false;
 };
 
-bool UneLettre::read( unsigned int *adr ){
-    quint32 a;
+bool UneLettre::read( UnCodeBinaire& cbin ){
     if( m_flag == 1 ){
-        *adr   = m_adr;
         m_flag = 2;
-        m_binCode[1] |= 0xf7000000;
-        a = m_adr;
-        a <<=11;
-        m_binCode[1] |= a;
+        cbin.setBinCode( m_adr, '\0' );
         m_instruction = QString("READ      AT 0x%2").arg(m_adr, 4, 16, QChar('0'));
         return true;
     }

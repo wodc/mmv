@@ -4,6 +4,8 @@
 #include <QApplication>
 #include <QRandomGenerator>
 
+#include "UnCodeBinaire.h"
+
 class UneLettre{
   private :
     unsigned char m_c;
@@ -15,8 +17,8 @@ class UneLettre{
     UneLettre();
     void setElement( QChar );
     unsigned char element();
-    bool write( unsigned int );
-    bool read( unsigned int *  );
+    bool write( unsigned int, UnCodeBinaire & );
+    bool read( UnCodeBinaire & );
     QString instruction();
     quint32 binCode(char);
 };
