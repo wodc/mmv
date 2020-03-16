@@ -24,8 +24,7 @@ bool Moteur::tryWrite(QDataStream& out){
     if(m_cWr>(2*m_cRd)){ ind=m_indice; }
     if( m_el[ind].write(adr, m_bin[m_indBin] ) ){
         a.i = m_bin[m_indBin].binCode();
-        for(int i=2;i<4;i++) out << a.ch[i];
-        for(int i=0;i<2;i++) out << a.ch[i];
+        for(int i=0;i<4;i++) out << a.ch[i];
         m_instruction = m_bin[m_indBin].showInstruction();
         m_instruction.append( QString(" -> [%1]").arg(m_bin[m_indBin].showBinCode()) );
         m_instruction.append( QChar::LineFeed );
@@ -44,8 +43,7 @@ bool Moteur::tryRead(QDataStream& out){
    t_conv a;
    if( m_el[m_indice].read( m_bin[m_indBin] ) ){
        a.i = m_bin[m_indBin].binCode();
-       for(int i=2;i<4;i++) out << a.ch[i];
-       for(int i=0;i<2;i++) out << a.ch[i];
+       for(int i=0;i<4;i++) out << a.ch[i];
        m_instruction = m_bin[m_indBin].showInstruction();
        m_instruction.append( QString(" -> [%1]").arg(m_bin[m_indBin].showBinCode()) );
        m_instruction.append( QChar::LineFeed );
