@@ -1,2 +1,4 @@
 
 mmv.pro.user*
+*.bin
+*.exe
