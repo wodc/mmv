@@ -60,6 +60,7 @@ int main(int argc, char *argv[] ){
 					fputc( buff[ adr ], stdout );
 				}
 			}
+			fputc( '\n', stdout );
 			close(fi);
 		} else {
 			fprintf(stderr, "erreur d'ouverture du fichier : %s\n", fName );
